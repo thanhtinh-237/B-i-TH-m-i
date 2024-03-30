@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bình luận</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #comment-container {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #01161e;
+            border-radius: 10px;
+        }
+
+        #comment-section {
+            margin-top: 20px;
+        }
+
+        #comment-form {
+            margin-top: 20px;
+        }
+
+        #comment-form div {
+            margin-bottom: 10px;
+        }
+
+        #comment-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #comment-form textarea {
+            width: 100%;
+        }
+
+        #comment-section div {
+            border-top: 1px solid #01161e;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="comment-container">
+    <h1 style="text-align:center;">Đánh giá</h1>
+
+    <div id="default-comment">
+        <div>
+            <strong>Yến Nhi:</strong> <br>
+            <em>30-03-2024 09:00 AM</em> <br>
+            <span>Sản phẩm rất tốt, các bạn nên mua.</span>
+          
+          <br> <strong>Phạm Triết:</strong> <br>
+            <em>29-03-2024 09:00 PM</em> <br>
+            <span>Giao hàng nhanh chóng, sản phẩm như ảnh, rất hài lòng sẽ mua lại lần sau.</span>
+          
+          <br> <strong>Thanh Thảo:</strong> <br>
+            <em>27-03-2024 07:00 PM</em> <br>
+            <span>Sản phẩm rất tuyệt.</span>
+          
+          <br> <strong>Diễm Quỳnh:</strong> <br>
+            <em>22-02-2024 10:00 PM</em> <br>
+            <span>Rất hài lòng với sản phẩm, đóng gói cẩn thận, giao hàng nhanh.</span>
+        </div>
+    </div>
+
+    <div id="comment-section">
+        <!-- Các bình luận sẽ được hiển thị ở đây -->
+    </div>
+
+    <h2> Đánh giá mới</h2>
+    <form id="comment-form">
+        <div>
+            <label for="name">Tên:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="comment">Bình luận:</label>
+            <textarea id="comment" name="comment" rows="4" required></textarea>
+        </div>
+        <button type="submit">Đăng bình luận</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("comment-form").addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        var name = document.getElementById("name").value;
+        var comment = document.getElementById("comment").value;
+        var dateTime = new Date().toLocaleString(); 
+        var commentElement = document.createElement("div");
+        commentElement.innerHTML = "<strong>" + name + ":</strong> " + "<br>" +
+                                    "<em>" + dateTime + "</em>" + "<br>" +
+                                    "<span>" + comment + "</span>";
+
+        document.getElementById("comment-section").appendChild(commentElement);
+        document.getElementById("name").value = "";
+        document.getElementById("comment").value = "";
+    });
+</script>
+
+</body>
+</html>

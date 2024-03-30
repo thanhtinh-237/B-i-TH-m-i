@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Current Time</title>
+<style>
+  #current-time {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+
+<div id="current-time"></div>
+
+<script>
+  function getCurrentTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
+  function updateClock() {
+    const currentTimeElement = document.getElementById('current-time');
+    currentTimeElement.textContent = getCurrentTime();
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
